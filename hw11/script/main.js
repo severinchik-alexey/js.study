@@ -2,17 +2,17 @@ let surname = prompt('Какая у вас фамилия', 'Петров');
 let name = prompt('Какое у вас имя', 'Петр');
 let subname = prompt('Какое у вас Отчетво', 'Петрович');
 let yearofbirthday = prompt('В каком году вы родились?', 'Введите год вашего рождения...');
-while (isNaN(yearofbirthday) || yearofbirthday === '' || yearofbirthday == null) {
+while (isNaN(yearofbirthday) || yearofbirthday === '' || yearofbirthday === null) {
     alert('Нужно ввести цифры, повторите попытку');
     yearofbirthday = prompt('В каком году вы родились?', 'Введите год вашего рождения...');
 };
 let monthofbirthday = prompt('В каком месяце вы родились?', 'Введите месяц вашего рождения...');
-while (isNaN(monthofbirthday) || monthofbirthday === '' || monthofbirthday == null) {
+while (isNaN(monthofbirthday) || monthofbirthday === '' || monthofbirthday === null) {
     alert('Нужно ввести цифры, повторите попытку');
     monthofbirthday = prompt('В каком месяце вы родились?', 'Введите месяц вашего рождения...');
 };
 let children = prompt('Сколько у вас детей (0 - ...)', '0');
-while (isNaN(children) || children === '' || children == null) {
+while (isNaN(children) || children === '' || children === null) {
     alert('Нужно ввести цифры, повторите попытку');
     children = prompt('Сколько у вас детей (0 - ...)', '0');
 };
