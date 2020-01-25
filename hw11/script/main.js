@@ -1,20 +1,18 @@
 let surname = prompt('Какая у вас фамилия', 'Петров');
 let name = prompt('Какое у вас имя', 'Петр');
 let subname = prompt('Какое у вас Отчетво', 'Петрович');
-let yearofbirthday = prompt('В каком году вы родились?', 'Введите год вашего рождения...');
+let yearofbirthday = prompt('В каком году вы родились? (цифрами)', 'Введите год вашего рождения...');
 while (isNaN(yearofbirthday) || !yearofbirthday) {
-    alert('Нужно ввести цифры, повторите попытку');
-    yearofbirthday = prompt('В каком году вы родились?', 'Введите год вашего рождения...');
+    yearofbirthday = prompt('В каком году вы родились? (цифрами)', 'Введите год вашего рождения...');
 };
-let monthofbirthday = prompt('В каком месяце вы родились?', 'Введите месяц вашего рождения...');
+let monthofbirthday = prompt('В каком месяце вы родились? (цифрами)', 'Введите месяц вашего рождения...');
 while (isNaN(monthofbirthday) || !monthofbirthday) {
-    alert('Нужно ввести цифры, повторите попытку');
-    monthofbirthday = prompt('В каком месяце вы родились?', 'Введите месяц вашего рождения...');
+    monthofbirthday = prompt('В каком месяце вы родились? (цифрами)', 'Введите месяц вашего рождения...');
 };
-let children = prompt('Сколько у вас детей (0 - ...)', '0');
+let children = prompt('Сколько у вас детей (0 - ...) (цифрами)', '0');
 while (isNaN(children) || !children) {
     alert('Нужно ввести цифры, повторите попытку');
-    children = prompt('Сколько у вас детей (0 - ...)', '0');
+    children = prompt('Сколько у вас детей (0 - ...) (цифрами)', '0');
 };
 let sex = confirm('Ваш пол мужской? (ОК или Cancel)');
 let nowyear = 2020;
