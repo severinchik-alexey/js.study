@@ -1,7 +1,7 @@
 let a = prompt('Введите a');
 let b = prompt('Введите b');
 let c = prompt('Введите c');
-let d = b ** 2 - 4 * a * c;
+let d = (b * b) - (4 * a * c);
 // const disk = () => console.log(-b / (2 * a)); 
 function solveEquation() {
     if (d < 0) {
