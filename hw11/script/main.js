@@ -20,7 +20,7 @@ let nowmonth = 1;
 children = children === '0' ? 'нет' : children;
 nowyear -= yearofbirthday;
 nowyear = monthofbirthday > nowmonth ? nowyear - 1 : nowyear;
-let adult = (nowyear >= 18) ? 'совершенолетний' : 'несовершенолетний';
+let adult = nowyear >= 18 ? 'совершенолетний' : 'несовершенолетний';
 nowmonth = 13 - monthofbirthday;
 nowmonth = nowmonth >= 12 ? nowmonth = 0 : nowmonth;
 sex = sex ? 'Мужской' : 'Женский';
