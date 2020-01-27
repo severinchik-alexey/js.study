@@ -19,7 +19,7 @@ function solveEquation() {
     } else if (d === 0) {
         let x = -b / (2 * a);
         alert(`x равен ${x}`);
-        return [x];
+        return parseInt[x];
     } else if (d > 0) {
         let x1 = (-b + d ** 0.5) / (2 * a);
         let x2 = (-b - d ** 0.5) / (2 * a);
