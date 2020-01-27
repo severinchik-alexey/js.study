@@ -15,11 +15,11 @@ function solveEquation() {
     let d = (b ** 2) - (4 * a * c);
     if (d < 0) {
         alert('Корней нет');
-        return;
+        return [];
     } else if (d === 0) {
         let x = -b / (2 * a);
         alert(`x равен ${x}`);
-        return x;
+        return [x];
     } else if (d > 0) {
         let x1 = (-b + d ** 0.5) / (2 * a);
         let x2 = (-b - d ** 0.5) / (2 * a);
