@@ -23,3 +23,14 @@ function maxV(array) {
 };
 console.log(maxV(array));
 alert(max);
+
+function maxV(...arguments) {
+    let max = arguments[0];
+    for (let i = 0; i < arguments.length; i++) {
+        if ((max - arguments[i]) < 0) {
+            max = arguments[i];
+        }
+    }
+    return max;
+};
+console.log(maxV(18, 2, 23, 6, 32, 10, 19));
