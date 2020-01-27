@@ -1,27 +1,14 @@
-function solveEquation() {
-    let a;
-    do {
-        a = parseInt(prompt('Введите a'));
-    } while (isNaN(a) || !a || a===0);
-    let b;
-    do {
-        b = parseInt(prompt('Введите b'));
-    } while (isNaN(b) || !b);
-    let c;
-    do {
-        c = parseInt(prompt('Введите c'));
-    } while (isNaN(c) || !c);
-
-    let d = (b ** 2) - (4 * a * c);
+function solveEquation(a, b, c) {
+    let d = Number((b ** 2) - (4 * a * c));
     if (d < 0) {
         return [];
     } else if (d === 0) {
-        let x = -b / (2 * a);
-        return parseInt[x];
+        let x = Number(-b / (2 * a));
+        return [x];
     } else if (d > 0) {
-        let x1 = (-b + d ** 0.5) / (2 * a);
-        let x2 = (-b - d ** 0.5) / (2 * a);
-        return parseInt([x1, x2]);
+        let x1 = Number((-b + d ** 0.5) / (2 * a));
+        let x2 = Number((-b - d ** 0.5) / (2 * a));
+        return console.log([x1, x2]);
     }
 }
-console.log(solveEquation());
+console.log(solveEquation(3,-4, 1));
