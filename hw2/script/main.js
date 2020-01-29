@@ -8,7 +8,7 @@ function solveEquation(a, b, c) {
     } else if (d > 0) {
         let x1 = Number((-b + d ** 0.5) / (2 * a));
         let x2 = Number((-b - d ** 0.5) / (2 * a));
-        return console.log([x1, x2]);
+        return [x1, x2];
     }
 }
 console.log(solveEquation(3,-4, 1));
