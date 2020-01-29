@@ -1,7 +1,7 @@
 function treeSum(arr) {
     let sum = 0;
     for (let value of arr) {
-        if (isNaN(value)) {
+        if (typeof value === 'object') {
             sum += treeSum(value);
         } else {
             sum += value;
@@ -9,4 +9,8 @@ function treeSum(arr) {
     }
     return sum;
 }
-console.log(treeSum([5, 2, [1, 4, [5, [4, [5, 8, 9], 7], 11], 7], 8, [9, 10]]));
+console.log(treeSum([ 5, 7, 
+        [ 4, [2], 8, [1,3], 2 ], 
+        [ 9, [] ], 
+        1, 8
+      ]));
