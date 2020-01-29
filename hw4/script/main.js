@@ -6,6 +6,7 @@ function treeSum(arr) {
         } else {
             sum += arr[i];    
     }
+    }
     return sum;
 }
 console.log(treeSum([5, 7,
