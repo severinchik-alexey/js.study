@@ -1,11 +1,11 @@
 function unique(arg) {
     var result = [];
-    var obj = [];
+    var b = [];
     for (var i = 0; i < arg.length; i++) {
-        obj[arg[i]] = arg[i];
+        b[arg[i]] = arg[i];
     }
-    for (var i in obj) {
-        result.push(obj[i]);
+    for (var i in b) {
+        result.push(b[i]);
     }
     return result;
 }
