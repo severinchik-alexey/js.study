@@ -1,5 +1,5 @@
 function objectsAreEqual(a, b) {
-    for (var i in a) {
+    for (let i in a) {
         if (a.hasOwnProperty(i)) {
             if (b.hasOwnProperty(i)) {
                 if (typeof a[i] === 'object') {
