@@ -1,10 +1,10 @@
-function unique(arg) {
-    var result = [];
-    var b = [];
-    for (var i = 0; i < arg.length; i++) {
-        b[arg[i]] = arg[i];
+function unique(arr) {
+    let result = [];
+    let b = [];
+    for (let i = 0; i < arr.length; i++) {
+        b[arr[i]] = arr[i];
     }
-    for (var i in b) {
+    for (let i in b) {
         result.push(b[i]);
     }
     return result;
