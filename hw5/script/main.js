@@ -8,5 +8,5 @@ function unique(arr) {
         result.push(b[i]);
     }
     return result;
-}
-console.log(unique([2,3,4,5,22,4,2,7,8,3,1,2,'nan','nen','nan']))
+};
+console.log(unique([2,3,4,5,22,4,2,7,8,3,1,2,'nan','nen','nan']));
