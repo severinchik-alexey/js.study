@@ -1,6 +1,6 @@
 function unique(arr) {
     let result = [];
-    let b = [];
+    let b = {};
     for (let i = 0; i < arr.length; i++) {
         b[arr[i]] = arr[i];
     }
