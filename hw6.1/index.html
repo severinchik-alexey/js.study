@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="2">
+        <tr>
+            <td>
+                <input id="num1" size="38">
+            </td>
+            <td rowspan="3" valign="top">
+                <input type="button" value=" + " onclick="add()">
+                <input type="button" value=" - " onclick="substract()">
+                <input type="button" value=" * " onclick="multiply()">
+                <input type="button" value=" / " onclick="divide()"> <br>   
+                <input type="button" value=" x&sup2; " onclick="sqrt()">
+                <input type="button" value=" % " onclick="percent()">
+                <input type="button" value=" &radic; " onclick="radical()">
+                <input type="button" value=" xᶰ" onclick="pow()"> <br>
+                <input type="button" value=" Clear" onclick="clearvalue()">
+            </td>
+        </tr>
+        <tr>
+            <td><input id="num2" size="38"></td>
+        </tr>
+        <tr>
+            <td><input id="rezult" size="38" readonly></td>
+        </tr>
+    </table>
+    <script src="./script/main.js"></script>
+</body>
+
+</html>
