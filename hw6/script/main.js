@@ -5,28 +5,28 @@ let calculator = (function () {
       result = 0;
     },
     add(x) {
-    result += x;
+      result += x;
     },
     substract(x) {
-    result -= x;
+      result -= x;
     },
     multiply(x) {
-    result *=x; 
+      result *=x; 
     },
     divide(x) {
-    result /= x;
+      result /= x;
     }
     pow(x) {
-    result **= x;
+      result **= x;
     },
     percent(x) {
-    result %=x;
+      result %=x;
     },
     sqrt(x) {
-    result = Math.sqrt(x);
+      result = Math.sqrt(x);
     },
     print() {
-    return result;
+      return result;
     }
     };
     })();
