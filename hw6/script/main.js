@@ -1,7 +1,7 @@
 let calculator = (function () {
   let result = 0;
   return {
-    clear(): function () {
+    clear() {
       result = 0;
     },
     add(x) {
