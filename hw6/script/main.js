@@ -15,7 +15,7 @@ let calculator = (function () {
     },
     divide(x) {
       result /= x;
-    }
+    },
     pow(x) {
       result **= x;
     },
@@ -30,16 +30,16 @@ let calculator = (function () {
     }
     };
     })();
-    calculator.add();
-    console.log(calculator.print());
+    calculator.add(5);
+    calculator.print();
     calculator.pow();
-    console.log(calculator.print());
+    calculator.print();
     calculator.sqrt();
-    console.log(calculator.print());
+    calculator.print();
     calculator.percent();
-    console.log(calculator.print());
+    calculator.print();
     calculator.divide();
-    console.log(calculator.print());
+    calculator.print();
     calculator.divide();
+    calculator.print();
     console.log(calculator.print());
-    
