@@ -11,7 +11,7 @@ let calculator = (function () {
       result -= x;
     },
     multiply(x) {
-      result *=x; 
+      result *= x; 
     },
     divide(x) {
       result /= x;
@@ -20,7 +20,7 @@ let calculator = (function () {
       result **= x;
     },
     percent(x) {
-      result %=x;
+      result %= x;
     },
     sqrt(x) {
       result = Math.sqrt(x);
