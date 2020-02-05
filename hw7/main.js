@@ -4,7 +4,7 @@ const user = {
 };
 
 function info(surname, age, ) {
-    console.log(`Name is ${this.name}, Surname is ${surname}, age is ${age}, sex is ${this.sex}`);
+    console.log(`Name is ${this.name}, sex is ${this.sex}, Surname is ${surname}, age is ${age}`);
 }
 
 function myBind(func, context, ...args) {
