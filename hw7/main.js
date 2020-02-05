@@ -3,7 +3,7 @@ const user = {
     sex: 'male'
 };
 
-function info(surname, age, ) {
+function info(surname, age) {
     console.log(`Name is ${this.name}, sex is ${this.sex}, Surname is ${surname}, age is ${age}`);
 }
 
