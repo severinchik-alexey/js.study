@@ -11,8 +11,6 @@ function myBind(func, context, ...args) {
     return function (...arg) {
         return func.call(context, ...args.concat(arg))
     }
-}
+};
 
-myBind(info, user)('Severinchik', '23')
-myBind(info, user, 'Severinchik')('23')
-myBind(info, user, 'Severinchik', '23')()
+myBind(info, user)('Severinchik', '23');
