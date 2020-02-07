@@ -1,13 +1,13 @@
 deepEqual = function (a, b) {
-    for (var p in a) {
-        if (a.hasOwnProperty(p)) {
+    for (let p in a) {
+        if (p) {
             if (a[p] !== b[p]) {
                 return false;
             }
         }
     }
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) {
+    for (let p in b) {
+        if (p) {
             if (a[p] !== b[p]) {
                 return false;
             }
@@ -15,4 +15,4 @@ deepEqual = function (a, b) {
     }
     return true;
 };
-console.log(deepEqual({ a: 9 }, {}));
+console.log(deepEqual({a: 9, b: 7}, {a: 9, b: 7}));
