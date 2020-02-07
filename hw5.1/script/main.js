@@ -1,14 +1,17 @@
-function objectsAreEqual(a, b) {
-    for (let i in a) {
-        if (a[i] && b[i]) {
-            if (typeof a[i] === 'object') {
-                if (!objectsAreEqual(a[i], b[i])) return false;
-            } else {
-                if (a[i] !== b[i]) return false;
-            }
-        } else {
-            return false;
-        }
-    } return true;
+Object.equals = function (x, y) {
+    if (x === y) return true;
+    if (!(x instanceof Object) || !(y instanceof Object)) return false;
+    if (x.constructor !== y.constructor) return false;
+    for (var p in x) {
+        if (!x.hasOwnProperty(p)) continue;
+        if (!y.hasOwnProperty(p)) return false;
+        if (x[p] === y[p]) continue;
+        if (typeof (x[p]) !== "object") return false;
+        if (!Object.equals(x[p], y[p])) return false;
+    }
+    for (p in y) {
+        if (y.hasOwnProperty(p) && !x.hasOwnProperty(p)) return false;
+    }
+    return true;
 }
-console.log(objectsAreEqual({ a: 7 }, { b: 9 }));
+console.log(Object.equals({}, { b: 9 }));
