@@ -1,14 +1,14 @@
 deepEqual = function (a, b) {
-    for (let p in a) {
-        if (p) {
-            if (a[p] !== b[p]) {
+    for (let i in a) {
+        if (i) {
+            if (a[i] !== b[i]) {
                 return false;
             }
         }
     }
-    for (let p in b) {
-        if (p) {
-            if (a[p] !== b[p]) {
+    for (let i in b) {
+        if (i) {
+            if (a[i] !== b[i]) {
                 return false;
             }
         }
