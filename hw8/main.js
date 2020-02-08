@@ -1,5 +1,4 @@
-class HashStorageFunc {
-    constructor() {
+function HashStorageFunc () {
         this.addValue = function (key, value) {
             this[key] = value;
         };
@@ -19,7 +18,6 @@ class HashStorageFunc {
             return Object.keys(this);
         };
     }
-}
 let drinkStorage = new HashStorageFunc();
 
 drinkStorage.addValue('Пина колада', 'да');
