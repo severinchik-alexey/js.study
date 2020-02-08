@@ -9,7 +9,7 @@ function info(surname, age) {
 
 function myBind(func, context, ...args) {
     return function (...arg) {
-        return func.call(context, ...args.concat(arg))
+        return func.apply(context, args.concat(arg))
     }
 };
 
