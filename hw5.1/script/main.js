@@ -15,4 +15,4 @@ function deepEqual(objA, objB) {
     }
     return true;
 }
-console.log(deepEqual({a: 1}, {a: 1}))
+console.log(deepEqual({a: 1}, {a: 2}))
