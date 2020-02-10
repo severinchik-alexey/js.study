@@ -25,3 +25,4 @@ let drinkStorage = new HashStorageFunc();
 drinkStorage.addValue('Пина колада', 'да');
 drinkStorage.addValue('Сок', 'нет');
 drinkStorage.deleteValue('Сок');
+console.log(drinkStorage.getValue('Пина колада'));
