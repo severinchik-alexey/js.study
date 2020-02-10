@@ -1,52 +1,40 @@
 function HashStorageFunc() {
+    this._hash = {};
     this.addValue = function (key, value) {
-        this[key] = value;
+        this._hash[key] = value;
     };
     this.getValue = function (key) {
-        return (`
-                Напиток: ${key}
-                Алкогольный: ${this[key]}`);
+        return this._hash[key];
     };
     this.deleteValue = function (key) {
-        return this[key] ? delete this[key] : false;
+        return this._hash[key] ? delete this._hash[key] : false;
     };
     this.getKeys = function () {
-        return Object.keys(this);
+        return Object.keys(this._hash);
     };
 }
 
 function ClassA() {
-    HashStorageFunc.apply(this, arguments);
-    this.Drinks = function () {
-        return Object.keys(this).length;
-    };
-    let parenntAddValue = this.addValue;
-    this.addValue = function (key) {
-        parenntAddValue.apply(this, arguments);
-        console.log(`${key} added to list`);
-        return true;
+    HashStorageFunc.call(this);
+    this.deleteValue = function (key) {
+        if (key in this._hash) {
+            delete this._hash[key];
+            return 'Successfully deleted';
+        }
+        return 'No such value';
     };
 }
 
 function ClassB() {
-    HashStorageFunc.apply(this, arguments);
-    this.deleteAll = function() {
-        for (let key in this) {
-            delete this[key];
-        }
-    };
-    let parentGetValue = this.getValue;
-    this.getValue = function(key) {
-        parentGetValue.apply(this, arguments);
-        if (this[key]) {
-            console.log(`${key} is on the list`)
-        } else console.log(`This drink isn't on the list`)
-    };
+    HashStorageFunc.call(this);
+    this.getEntries = function() {
+        return Object.entries(this._hash);
+    }
 }
-let drinkStorage = new HashStorageFunc();
 let classA = new ClassA();
 let classB = new ClassB();
-drinkStorage.addValue('Пина колада', 'да');
-drinkStorage.addValue('Сок', 'нет');
+
+drinkStorage.addValue('Пина колада', {'Алкогль' : 'да'});
+drinkStorage.addValue('Сок', {'Алкоголь':'нет'});
 drinkStorage.deleteValue('Сок');
 console.log(drinkStorage.getValue('Пина колада'));
