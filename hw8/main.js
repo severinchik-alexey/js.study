@@ -8,11 +8,7 @@ function HashStorageFunc () {
                 Алкогольный: ${this[key]}`);
         };
         this.deleteValue = function (key) {
-            if (this[key]) {
-                delete this[key];
-                return true;
-            }
-            return false;
+            return this[key]? delete this[key] :false;
         };
         this.getKeys = function () {
             return Object.keys(this);
