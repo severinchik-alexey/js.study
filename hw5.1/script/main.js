@@ -1,18 +1,21 @@
-deepEqual = function (a, b) {
-    for (let i in a) {
-        if (i) {
-            if (a[i] !== b[i]) {
-                return false;
-            }
-        }
+function deepEqual(objA, objB) {
+    let objAKeys = Object.keys(objA);
+    let objBKeys = Object.keys(objB);
+
+    if (objA === objB) {
+        return true;
     }
-    for (let i in b) {
-        if (i) {
-            if (a[i] !== b[i]) {
-                return false;
-            }
+    if (typeof(objA) !== 'object' || typeof(objB) !== 'object') {
+        return false;
+    }
+    if (objAKeys.length !== objBKeys.length) {
+        return false;
+    }
+    for (let key in objA) {
+        if (!deepEqual(objA[key], objB[key])) {
+            return false;
         }
     }
     return true;
-};
-console.log(deepEqual({a: 9, b: 7}, {a: 9, b: 7}));
+}
+console.log(deepEqual({a: 1}, {b: 1}))
