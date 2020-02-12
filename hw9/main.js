@@ -47,4 +47,4 @@ function ClassB(drunk) {
     };
 }
 
-const drunk = new ClassB('Напиток');
+let drunk = new ClassB('Напиток');
