@@ -5,10 +5,7 @@ function deepEqual(objA, objB) {
     if (objA === objB) {
         return true;
     }
-    if (typeof(objA) !== 'object' || typeof(objB) !== 'object') {
-        return false;
-    }
-    if (objAKeys.length !== objBKeys.length) {
+    if (typeof(objA) !== 'object' || typeof(objB) !== 'object' || objAKeys.length !== objBKeys.length) {
         return false;
     }
     for (let key in objA) {
@@ -18,4 +15,4 @@ function deepEqual(objA, objB) {
     }
     return true;
 }
-console.log(deepEqual({a: 1}, {a: 1}))
+console.log(deepEqual({a: 1}, {a: 2}))
