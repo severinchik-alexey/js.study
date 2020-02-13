@@ -1,9 +1,8 @@
 let arr = [0, 1, 1.5, 17, 9, 0.5];
-function inRange(min, max, array) {
-    return arr.filter(function (value) {
-        if (value >= min && value <= max) {
-            return value;
-        }
-    });
+function inRange(min, max) {
+    return function (item) {
+        return item >= min && item <= max;
+    }
 }
-console.log(inRange(1, 10, arr));
+let filtered = arr.filter(inRange(1, 10));
+console.log(filtered); //
