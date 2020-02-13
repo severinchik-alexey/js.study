@@ -35,12 +35,6 @@ function ClassA(useful) {
 
 let drink = new ClassA('Да');
 
-drink.addValue('Пина колада', 'да');
-drink.addValue('Сок', 'да');
-drink.deleteValue('Сок');
-drink.getValue('Пина колада');
-drink.getUseful();
-
 
 function ClassB(drunk) {
     HashStorageFunc.call(this, arguments);
@@ -53,4 +47,4 @@ function ClassB(drunk) {
     };
 }
 
-const drunk = new ClassB('Напиток');
+let drunk = new ClassB('Напиток');
