@@ -4,5 +4,4 @@ function inRange(min, max) {
         return item >= min && item <= max;
     }
 }
-let filtered = arr.filter(inRange(1, 10));
-console.log(filtered); //
+console.log(arr.filter(inRange(1, 10)));
