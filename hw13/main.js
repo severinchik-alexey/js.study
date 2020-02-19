@@ -102,7 +102,7 @@ function createForm(form, formDef) {
     }
     document.body.appendChild(form);
 };
-let received = document.forms.form1;
-let received1 = document.forms.form2;
+let formes1 = document.forms.form1;
+let formes2 = document.forms.form2;
 createForm(received, formDef1);
 createForm(received1, formDef2);
