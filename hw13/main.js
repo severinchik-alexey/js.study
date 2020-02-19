@@ -104,5 +104,5 @@ function createForm(form, formDef) {
 };
 let formes1 = document.forms.form1;
 let formes2 = document.forms.form2;
-createForm(received, formDef1);
-createForm(received1, formDef2);
+createForm(formes1, formDef1);
+createForm(formes2, formDef2);
