@@ -1,22 +1,23 @@
 let balls = document.querySelectorAll('img');
 for (let ball of balls) {
-    ball.onmousedown = function(event) {
-        let shiftX = event.clientX - ball.getBoundingClientRect().left;
-        let shiftY = event.clientY - ball.getBoundingClientRect().top;
+    ball.onmousedown = function(eo) {
+        let shiftX = eo.clientX - ball.getBoundingClientRect().left;
+        let shiftY = eo.clientY - ball.getBoundingClientRect().top;
     
         ball.style.position = 'absolute';
         ball.style.zIndex = 1000;
+        ball.style.cursor = 'pointer';
         document.body.append(ball);
     
-        moveAt(event.pageX, event.pageY);
+        moveAt(eo.pageX, eo.pageY);
     
         function moveAt(pageX, pageY) {
             ball.style.left = pageX - shiftX + 'px';
             ball.style.top = pageY - shiftY + 'px';
         }
     
-        function onMouseMove(event) {
-            moveAt(event.pageX, event.pageY);
+        function onMouseMove(eo) {
+            moveAt(eo.pageX, eo.pageY);
         }
     
         document.addEventListener('mousemove', onMouseMove);
@@ -24,6 +25,7 @@ for (let ball of balls) {
         ball.onmouseup = function() {
             document.removeEventListener('mousemove', onMouseMove);
             ball.onmouseup = null;
+            ball.style.cursor = 'default';
         };
     
     };
