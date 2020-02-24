@@ -9,20 +9,16 @@ for (let ball of balls) {
         ball.style.cursor = 'pointer';
         ball.style.width = 170 + 'px';
         document.body.append(ball);
-
+        document.addEventListener('mousemove', onMouseMove);
         moveAt(eo.pageX, eo.pageY);
 
         function moveAt(pageX, pageY) {
             ball.style.left = pageX - shiftX + 'px';
             ball.style.top = pageY - shiftY + 'px';
         }
-
         function onMouseMove(eo) {
             moveAt(eo.pageX, eo.pageY);
         }
-
-        document.addEventListener('mousemove', onMouseMove);
-
         ball.onmouseup = function () {
             document.removeEventListener('mousemove', onMouseMove);
             ball.onmouseup = null;
@@ -31,7 +27,6 @@ for (let ball of balls) {
         };
 
     };
-
     ball.ondragstart = function () {
         return false;
     };
