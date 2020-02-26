@@ -16,14 +16,6 @@ let formDef1 = [
     { label: 'Опубликовать', kind: 'submit' },
 ];
 
-// let formDef2 = [
-//     { label: 'Фамилия:', kind: 'longtext', name: 'lastname' },
-//     { label: 'Имя:', kind: 'longtext', name: 'firstname' },
-//     { label: 'Отчество:', kind: 'longtext', name: 'secondname' },
-//     { label: 'Возраст:', kind: 'number', name: 'age' },
-//     { label: 'Зарегистрироваться', kind: 'submit' },
-// ];
-
 function createForm(formdef) {
     let form = document.createElement('form');
     form.method = 'post';
@@ -105,7 +97,6 @@ function createForm(formdef) {
         form.append(div);
     }
 }
-// createForm(formDef2);
 createForm(formDef1);
 
 let validText = document.forms[0].querySelectorAll('[type=text]');
