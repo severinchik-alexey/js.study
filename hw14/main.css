@@ -1,24 +1,53 @@
-form {
-    margin-bottom: 40px;
-    padding: 25px;
+.wrong {
+    border: 1px solid red;
 }
 
-.label {
-    flex-basis: 250px;
-    font-size: 18px;
-    font-weight: bold;
+.error-message {
+    font-size: 16px;
+    padding: 1px;
+    margin: 0 auto;
+    margin-left: 5px;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    color: #ff0000;
+    background-color: #6be4607c;
+}
+form {  
+    min-width: 550px;
+    margin-bottom: 20px;
 }
 
-.input {
-    min-height: 20px;
+.form {
+    display: grid;
+    grid-template-columns: 150px auto 1fr;
+	margin-bottom: 5px;
 }
 
-.textarea {
-    resize: vertical;
-    width: 48%;
+.form input[type="text"] {
+	width: 400px;
 }
 
-.div {
-    display: flex;
-    margin-top: 8px;
+.form input[type="number"] {
+	width: 100px;
+}
+
+.form input[type="email"] {
+    width: 200px;
+}
+
+.form select {
+    width: 200px;
+}
+
+.form textarea {
+    width: 400px;
+    height: 50px;
+}
+
+.radio {
+	grid-template-columns: 150px auto auto auto 1fr;
+}
+
+p {
+    font-size: 40;
 }

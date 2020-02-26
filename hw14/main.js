@@ -1,202 +1,210 @@
 let formDef1 = [
-  { label: 'Название сайта:', kind: 'longtext', name: 'sitename' },
-  { label: 'URL сайта:', kind: 'longtext', name: 'siteurl' },
-  { label: 'Посетителей в сутки:', kind: 'number', name: 'visitors' },
-  { label: 'E-mail для связи:', kind: 'shorttext', name: 'email' },
-  {
-    label: 'Рубрика каталога:', kind: 'combo', name: 'division', options: [
-      { text: 'здоровье', value: 1 },
-      { text: 'домашний уют', value: 2 },
-      { text: 'бытовая техника', value: 3 }
-    ]
-  },
-  {
-    label: 'Pазмещение:', kind: 'radio', name: 'payment', options: [
-      { text: 'бесплатное', value: 1 },
-      { text: 'платное', value: 2 },
-      { text: 'VIP', value: 3 }
-    ]
-  },
-  { label: 'Разрешить отзывы:', kind: 'check', name: 'votes' },
-  { label: 'Описание сайта:', kind: 'memo', name: 'description' },
-  { label: 'Опубликовать', kind: 'submit' }
+    { label: 'Название сайта:', kind: 'longtext', name: 'sitename' },
+    { label: 'URL сайта:', kind: 'longtext', name: 'siteurl' },
+    { label: 'Посетителей в сутки:', kind: 'number', name: 'visitors' },
+    { label: 'E-mail для связи:', kind: 'shorttext', name: 'email' },
+    {
+        label: 'Рубрика каталога:', kind: 'combo', name: 'division',
+        variants: [{ text: 'здоровье', value: 1 }, { text: 'домашний уют', value: 2 }, { text: 'бытовая техника', value: 3 }]
+    },
+    {
+        label: 'Размещение:', kind: 'radio', name: 'payment',
+        variants: [{ text: 'бесплатное', value: 1 }, { text: 'платное', value: 2 }, { text: 'VIP', value: 3 }]
+    },
+    { label: 'Разрешить отзывы:', kind: 'check', name: 'votes' },
+    { label: 'Описание сайта:', kind: 'memo', name: 'description' },
+    { label: 'Опубликовать', kind: 'submit' },
 ];
+
 let formDef2 = [
-  { label: 'Фамилия:', kind: 'longtext', name: 'lastname' },
-  { label: 'Имя:', kind: 'longtext', name: 'firstname' },
-  { label: 'Отчество:', kind: 'longtext', name: 'secondname' },
-  { label: 'Возраст:', kind: 'number', name: 'age' },
-  { label: 'Зарегистрироваться', kind: 'submit' }
+    { label: 'Фамилия:', kind: 'longtext', name: 'lastname' },
+    { label: 'Имя:', kind: 'longtext', name: 'firstname' },
+    { label: 'Отчество:', kind: 'longtext', name: 'secondname' },
+    { label: 'Возраст:', kind: 'number', name: 'age' },
+    { label: 'Зарегистрироваться', kind: 'submit' },
 ];
 
-function createForm(form, formDef) {
-  let i = 0;
-  for (let key of formDef) {
-    let div = document.createElement('div');
-    let label = document.createElement('label');
-    form.appendChild(div).classList.add('div');
-    div.appendChild(label).classList.add('label');
-    label.innerText = key.label;
-    switch (key.kind) {
-      case 'longtext':
-        createElem('text');
-        break;
-      case 'shorttext':
-        createElem('email');
-        break;
-      case 'number':
-        createElem('number');
-        break;
-      case 'check':
-        createElem('checkbox');
-        break;
-      case 'combo':
-        let select = document.createElement('select');
-        div.appendChild(select).classList.add('select');
-        select.name = key.name;
-        select.id = select.name + i++;
-        label.htmlFor = select.id;
-        for (let item of key.options) {
-          let option = document.createElement('option');
-          select.appendChild(option);
-          option.innerText = item.text;
-          option.value = item.value;
+function createForm(formdef) {
+    let form = document.createElement('form');
+    form.method = 'post';
+    form.action = 'https://fe.it-academy.by/TestForm.php';
+    document.body.prepend(form);
+
+    for (let item of formdef) {
+        let div = document.createElement('div');
+        div.classList.add('form');
+        let label = document.createElement('label');
+        label.append(item.label);
+
+        function addInput(kind) {
+            let input = document.createElement('input');
+            input.name = item.name;
+            input.type = kind;
+            div.append(label, input);
         }
-        break;
-      case 'radio':
-        let divRadio = document.createElement('div');
-        div.appendChild(divRadio);
-        for (let item of key.options) {
-          let input = document.createElement('input');
-          divRadio.appendChild(input);
-          input.name = 'position';
-          input.type = 'radio';
-          input.id = ++i;
-          let labelRadio = document.createElement('label');
-          divRadio.appendChild(labelRadio);
-          labelRadio.innerText = item.text;
-          labelRadio.htmlFor = i;
+        function addSelect() {
+            let select = document.createElement('select');
+            select.name = item.name;
+            div.append(label, select);
+            for (let selectItem of item.variants) {
+                let option = new Option(selectItem.text, selectItem.value);
+                select.append(option);
+            }
         }
-        break;
-      case 'memo':
-        let textarea = document.createElement('textarea');
-        div.appendChild(textarea).classList.add('textarea');
-        textarea.name = key.name;
-        textarea.id = textarea.name + i++;
-        label.htmlFor = textarea.id;
-        break;
-      case 'submit':
-        createElem('submit');
-        div.removeChild(label);
-        div.classList.remove('div');
-        break;
-    }
+        function addRadio() {
+            div.append(label);
+            let divRadio = document.createElement('div');
+            divRadio.classList.add('radio');
+            for (let radioItem of item.variants) {
+                let input = document.createElement('input');
+                input.type = item.kind;
+                input.name = item.name;
+                input.value = radioItem.value;
 
-    function createElem(type) {
-      let input = document.createElement('input');
-      div.appendChild(input).classList.add('input');
-      input.id = form.name + i++;
-      label.htmlFor = input.id;
-      input.type = type;
-      input.name = key.name;
-      if (key.kind === 'submit') {
-        input.value = key.label;
-      }
-    }
-  }
-  document.body.appendChild(form);
-};
-let forms1 = document.forms.form1;
-let forms2 = document.forms.form2;
-createForm(forms1, formDef1);
-createForm(forms2, formDef2);
+                label = document.createElement('label');
+                label.append(input, radioItem.text);
+                divRadio.append(label);
+            }
+            div.append(divRadio);
+        }
 
-let allInputs = document.querySelectorAll('input');
-allInputs.forEach(item =>
-  item.addEventListener('blur', () => validateAllInput(item))
-);
-
-let textarea = document.querySelector('textarea');
-textarea.addEventListener('blur', () => validateTextarea());
-
-let forms = document.querySelectorAll('form');
-forms.forEach(item => {
-  item.addEventListener('submit', () => {
-    let inputs = item.querySelectorAll('input');
-    for (let input of inputs) {
-      validateAllInput(input);
+        function addTextarea() {
+            let textarea = document.createElement('textarea');
+            textarea.name = item.name;
+            div.append(label, textarea);
+        }
+        function addSubmit() {
+            let input = document.createElement('input');
+            input.type = 'submit';
+            input.value = item.label;
+            div.append(input);
+        }
+        switch (item.kind) {
+            case 'longtext':
+                addInput('text');
+                break;
+            case 'number':
+                addInput('number');
+                break;
+            case 'check':
+                addInput('checkbox');
+                break;
+            case 'combo':
+                addSelect();
+                break;
+            case 'radio':
+                addRadio();
+                break;
+            case 'memo':
+                addTextarea();
+                break;
+            case 'submit':
+                addSubmit();
+                break;
+        }
+        form.append(div);
     }
-    validateTextarea();
-    let allErrorsInForm = item.querySelectorAll('.error');
-    if (allErrorsInForm[0]) {
-      event.preventDefault();
-      allErrorsInForm[0].focus();
+}
+createForm(formDef2);
+createForm(formDef1);
+
+let validText = document.forms[0].querySelectorAll('[type=text]');
+let validNumber = document.forms[0].querySelectorAll('[type=number]');
+let validEmail = document.forms[0].querySelectorAll('[type=email]');
+let validRadio = document.forms[0].querySelectorAll('[type=radio]');
+let validTAreas = document.forms[0].querySelectorAll('textarea');
+let itemList = [...validText, ...validNumber, ...validEmail, ...validRadio, ...validTAreas];
+let validated;
+let dec;
+
+function validation(item) {
+    if (!validated) {
+        item.classList.add('wrong');
+        if (!item.nextElementSibling) {
+            item.insertAdjacentHTML('afterend', `<p class="error-message">${dec}</p>`)
+        }
+    } else {
+        item.classList.remove('wrong');
+        if (item.nextElementSibling) {
+            item.nextElementSibling.remove();
+        }
     }
-  });
+}
+
+function formLength(item) {
+    if (!item.value) {
+        validated = false;
+        dec = 'Нельзя оставлять пустую строку';
+    } else {
+        validated = true;
+    }
+    validation(item);
+}
+
+function numberValid(item) {
+    if (item.type === 'number' && (item.value <= 0 || item.value === '')) {
+        validated = false;
+        dec = 'Введите значене больше 0';
+    } else {
+        validated = true;
+    }
+    validNumber.forEach(function (input) {
+        validation(input);
+    });
+}
+
+function emailValid(item) {
+    if (item.type === 'email' && !item.value.match('.@')) {
+        validated = false;
+        dec = 'Введите корректный Email';
+    } else {
+        validated = true;
+    }
+    validEmail.forEach(function (input) {
+        validation(input);
+    });
+}
+
+function radioValid(item) {
+    let checkedItems = document.forms[0].querySelectorAll('input[type=radio]:checked');
+    if (item.type === 'radio' && !checkedItems.length) {
+        validated = false;
+        dec = 'Выберите вариант';
+    } else {
+        validated = true;
+    }
+    let radioStyle = document.forms[0].querySelector('.radio');
+    validation(radioStyle);
+}
+
+function checkAllitems(item) {
+    formLength(item);
+    switch (item.type) {
+        case 'number':
+            numberValid(item);
+            break;
+        case 'email':
+            emailValid(item);
+            break;
+        case 'radio':
+            radioValid(item);
+            break;
+    }
+}
+
+itemList.forEach(function (item) {
+    item.addEventListener('blur', function () {
+        checkAllitems(item);
+    });
 });
 
-function validateAllInput(item) {
-  let type = item.type;
-  removeError(item);
-  switch (type) {
-    case 'text':
-      validateValue(item);
-      break;
-    case 'email':
-      validateEmail(item);
-      break;
-    case 'number':
-      validateValue(item);
-      validateNumber(item);
-      break;
-    case 'radio':
-      validateRadio();
-      break;
-  }
-}
-function validateTextarea() {
-  let error = document.querySelector('.error');
-  if ((error = textarea.nextSibling)) {
-    error.remove();
-    textarea.style.borderColor = '';
-  }
-  if (!textarea.value) textarea.after(createError(textarea, 'Не оставляйте поле пустым'));
-}
-function validateValue(item) {
-  if (!item.value) item.after(createError(item, 'Не оставляйте поле пустым'));
-}
-function validateEmail(item) {
-  if (!(item.value.includes('@') && item.value.includes('.'))) {
-    item.after(createError(item, 'Введите корректный Email'));
-  }
-}
-function validateNumber(item) {
-  if (Number(item.value) < 0)
-    item.after(createError(item, 'Необходимо ввести положительное число'));
-}
-function validateRadio() {
-  let allRadio = document.querySelectorAll('[type="radio"]');
-  let checked = [...allRadio].map(item => item.checked == true);
-  let divRadio = document.querySelector('.radio');
-  let error = document.querySelector('.error');
-  if ((error = divRadio.nextSibling)) error.remove();
-  if (!checked.includes(true))
-    divRadio.after(createError(divRadio, 'Необходимо выбрать'));
-}
-function removeError(item) {
-  let error = document.querySelector('.error');
-  if (item.type === 'text' || item.type === 'email' || item.type === 'number') {
-    if ((error = item.nextSibling)) {
-      error.remove();
-      item.style.borderColor = '';
-    }
-  }
-}
-function createError(elem, text) {
-  let message = document.createElement('label');
-  message.classList.add('error');
-  message.append(document.createTextNode(text));
-  message.htmlFor = elem.id;
-  elem.style.borderColor = 'red';
-  return message;
-}
+let submit = document.forms[0].querySelector('[type=submit]');
+submit.addEventListener('click', function (event) {
+    itemList.forEach(function (item) {
+        checkAllitems(item);
+        if (!validated) {
+            event.preventDefault();
+            document.querySelector('.wrong').focus();
+        }
+    });
+});
