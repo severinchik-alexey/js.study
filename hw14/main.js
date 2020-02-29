@@ -201,5 +201,4 @@ submit.addEventListener('click', function (event) {
         }
     });
 });
-};
-validall();
+} validall();
