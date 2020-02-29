@@ -62,7 +62,6 @@ function lines() {
   hourLine.setAttribute("y1", w / 2);
   hourLine.setAttribute("y2", 100);
   hourLine.setAttribute("stroke", "black");
-  hourLine.setAttribute("stroke-width", 8);
   hourLine.setAttribute("id", "hours");
   hourLine.setAttribute("stroke-linecap", "round");
   svg.appendChild(hourLine);
@@ -72,7 +71,6 @@ function lines() {
   minLine.setAttribute("y1", w / 2);
   minLine.setAttribute("y2", 60);
   minLine.setAttribute("stroke", "blue");
-  minLine.setAttribute("stroke-width", 4);
   minLine.setAttribute("id", "minutes");
   minLine.setAttribute("stroke-linecap", "round");
   svg.appendChild(minLine);
@@ -82,7 +80,6 @@ function lines() {
   secLine.setAttribute("y1", w / 2);
   secLine.setAttribute("y2", 70);
   secLine.setAttribute("stroke", "red");
-  secLine.setAttribute("stroke-width", 2);
   secLine.setAttribute("id", "seconds");
   secLine.setAttribute("stroke-linecap", "round");
   svg.appendChild(secLine);
