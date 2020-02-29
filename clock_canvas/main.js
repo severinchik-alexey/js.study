@@ -12,7 +12,7 @@ const cos = Math.cos;
 let clock = document.getElementById("clock");
 let ctx = clock.getContext('2d');
 
-function drawClock() {
+function Clock() {
     ctx.beginPath();
     ctx.arc(300, 300, 300, 0, 2 * pi);
     ctx.fillStyle = "#fcca66";
@@ -77,4 +77,4 @@ function drawClock() {
     ctx.stroke();
 }
 
-setInterval(drawClock, 1000);
+setInterval(Clock, 1000);
