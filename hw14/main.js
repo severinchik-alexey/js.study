@@ -16,14 +16,6 @@ let formDef1 = [
     { label: 'Опубликовать', kind: 'submit' },
 ];
 
-let formDef2 = [
-    { label: 'Фамилия:', kind: 'longtext', name: 'lastname' },
-    { label: 'Имя:', kind: 'longtext', name: 'firstname' },
-    { label: 'Отчество:', kind: 'longtext', name: 'secondname' },
-    { label: 'Возраст:', kind: 'number', name: 'age' },
-    { label: 'Зарегистрироваться', kind: 'submit' },
-];
-
 function createForm(formdef) {
     let form = document.createElement('form');
     form.method = 'post';
@@ -105,7 +97,6 @@ function createForm(formdef) {
         form.append(div);
     }
 }
-createForm(formDef2);
 createForm(formDef1);
 
 let validText = document.forms[0].querySelectorAll('[type=text]');
@@ -114,6 +105,8 @@ let validEmail = document.forms[0].querySelectorAll('[type=email]');
 let validRadio = document.forms[0].querySelectorAll('[type=radio]');
 let validTAreas = document.forms[0].querySelectorAll('textarea');
 let itemList = [...validText, ...validNumber, ...validEmail, ...validRadio, ...validTAreas];
+
+function validall(){
 let validated;
 let dec;
 
@@ -145,11 +138,11 @@ function numberValid(item) {
     if (item.type === 'number' && (item.value <= 0 || item.value === '')) {
         validated = false;
         dec = 'Введите значене больше 0';
-    } else {
+    } else {    
         validated = true;
     }
-    validNumber.forEach(function (input) {
-        validation(input);
+    validNumber.forEach(function (item) {
+        validation(item);
     });
 }
 
@@ -160,8 +153,8 @@ function emailValid(item) {
     } else {
         validated = true;
     }
-    validEmail.forEach(function (input) {
-        validation(input);
+    validEmail.forEach(function (item) {
+        validation(item);
     });
 }
 
@@ -208,3 +201,5 @@ submit.addEventListener('click', function (event) {
         }
     });
 });
+};
+validall();
