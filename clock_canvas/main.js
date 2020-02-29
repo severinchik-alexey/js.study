@@ -77,4 +77,4 @@ function drawClock() {
     ctx.stroke();
 }
 
-setInterval(drawClock, 40);
+setInterval(drawClock, 1000);
