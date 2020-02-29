@@ -9,7 +9,7 @@ const cos = Math.cos;
 const sin = Math.sin;
 
 function yellowCircle() {
-  let yellow = document.createElementNS(svgNS, "circle"); //создаем область циферблата
+  let yellow = document.createElementNS(svgNS, "circle");
   yellow.setAttribute("cx", w / 2);
   yellow.setAttribute("cy", h / 2);
   yellow.setAttribute("r", w / 2);
@@ -20,7 +20,6 @@ function yellowCircle() {
 }
 yellowCircle();
 function greenCircle() {
-  // создаем зеленые кружки
   let angle = 30;
   for (i = 1; i <= 12; i++) {
     let green = document.createElementNS(svgNS, "circle");
@@ -39,7 +38,6 @@ function greenCircle() {
 greenCircle();
 
 function numbers() {
-  //рисуем цифры на циферблате
   let angle = 30;
   for (i = 1; i <= 12; i++) {
     let text = document.createElementNS(svgNS, "text");
