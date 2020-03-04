@@ -16,7 +16,7 @@ let Rocket1Y = H / 2 - rocketHeight / 2;
 let Rocket2Y = H / 2 - rocketHeight / 2;
 
 //Шаг ракеток
-let step = 10;
+let step = 3;
 
 //Движение
 let action = false;
