@@ -33,6 +33,12 @@ function randomXNumber() {
   return num;
 };
 
+//Параметры шарика
+let ballX = W / 2; //первоначальное положение
+let ballY = H / 2;
+let ballRadius = 10;
+let speedX = randomXNumber();
+let speedY = randomYNumber(-1, 1); //скорость шарика
 function randomYNumber(min, max) {
   let num = Math.random() * (max - min) + min;
   if (num === 0) {
@@ -41,15 +47,7 @@ function randomYNumber(min, max) {
   return num;
 };
 
-//Параметры шарика
-let ballX = W / 2; //первоначальное положение
-let ballY = H / 2;
-let ballRadius = 10;
-let speedX = randomXNumber();
-let speedY = randomYNumber(-1, 1); //скорость шарика
-
 render();
-
 //Функции остановки/запуска
 function start() {
   reset();
