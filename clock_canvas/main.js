@@ -77,4 +77,4 @@ function Clock() {
     ctx.stroke();
 }
 
-setInterval(Clock, 1000);
+setInterval(Clock, 0);
