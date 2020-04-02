@@ -200,5 +200,5 @@ submit.addEventListener('click', function (event) {
             document.querySelector('.wrong').focus();
         }
     });
-});
+}); 
 } validall();
