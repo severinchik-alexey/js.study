@@ -4,11 +4,15 @@ let formDef1 = [
     { label: 'Посетителей в сутки:', kind: 'number', name: 'visitors' },
     { label: 'E-mail для связи:', kind: 'shorttext', name: 'email' },
     {
-        label: 'Рубрика каталога:', kind: 'combo', name: 'division',
+        label: 'Рубрика каталога:',
+        kind: 'combo',
+        name: 'division',
         variants: [{ text: 'здоровье', value: 1 }, { text: 'домашний уют', value: 2 }, { text: 'бытовая техника', value: 3 }]
     },
     {
-        label: 'Размещение:', kind: 'radio', name: 'payment',
+        label: 'Размещение:',
+        kind: 'radio',
+        name: 'payment',
         variants: [{ text: 'бесплатное', value: 1 }, { text: 'платное', value: 2 }, { text: 'VIP', value: 3 }]
     },
     { label: 'Разрешить отзывы:', kind: 'check', name: 'votes' },
@@ -34,6 +38,7 @@ function createForm(formdef) {
             input.type = kind;
             div.append(label, input);
         }
+
         function addSelect() {
             let select = document.createElement('select');
             select.name = item.name;
@@ -41,8 +46,12 @@ function createForm(formdef) {
             for (let selectItem of item.variants) {
                 let option = new Option(selectItem.text, selectItem.value);
                 select.append(option);
+                if (selectItem.text == 'здоровье') {
+
+                }
             }
         }
+
         function addRadio() {
             div.append(label);
             let divRadio = document.createElement('div');
@@ -65,6 +74,7 @@ function createForm(formdef) {
             textarea.name = item.name;
             div.append(label, textarea);
         }
+
         function addSubmit() {
             let input = document.createElement('input');
             input.type = 'submit';
@@ -106,99 +116,100 @@ let validRadio = document.forms[0].querySelectorAll('[type=radio]');
 let validTAreas = document.forms[0].querySelectorAll('textarea');
 let itemList = [...validText, ...validNumber, ...validEmail, ...validRadio, ...validTAreas];
 
-function validall(){
-let validated;
-let dec;
+function validall() {
+    let validated;
+    let dec;
 
-function validation(item) {
-    if (!validated) {
-        item.classList.add('wrong');
-        if (!item.nextElementSibling) {
-            item.insertAdjacentHTML('afterend', `<p class="error-message">${dec}</p>`)
-        }
-    } else {
-        item.classList.remove('wrong');
-        if (item.nextElementSibling) {
-            item.nextElementSibling.remove();
-        }
-    }
-}
-
-function formLength(item) {
-    if (!item.value) {
-        validated = false;
-        dec = 'Нельзя оставлять пустую строку';
-    } else {
-        validated = true;
-    }
-    validation(item);
-}
-
-function numberValid(item) {
-    if (item.type === 'number' && (item.value <= 0 || item.value === '')) {
-        validated = false;
-        dec = 'Введите значене больше 0';
-    } else {    
-        validated = true;
-    }
-    validNumber.forEach(function (item) {
-        validation(item);
-    });
-}
-
-function emailValid(item) {
-    if (item.type === 'email' && !item.value.match('.@')) {
-        validated = false;
-        dec = 'Введите корректный Email';
-    } else {
-        validated = true;
-    }
-    validEmail.forEach(function (item) {
-        validation(item);
-    });
-}
-
-function radioValid(item) {
-    let checkedItems = document.forms[0].querySelectorAll('input[type=radio]:checked');
-    if (item.type === 'radio' && !checkedItems.length) {
-        validated = false;
-        dec = 'Выберите вариант';
-    } else {
-        validated = true;
-    }
-    let radioStyle = document.forms[0].querySelector('.radio');
-    validation(radioStyle);
-}
-
-function checkAllitems(item) {
-    formLength(item);
-    switch (item.type) {
-        case 'number':
-            numberValid(item);
-            break;
-        case 'email':
-            emailValid(item);
-            break;
-        case 'radio':
-            radioValid(item);
-            break;
-    }
-}
-
-itemList.forEach(function (item) {
-    item.addEventListener('blur', function () {
-        checkAllitems(item);
-    });
-});
-
-let submit = document.forms[0].querySelector('[type=submit]');
-submit.addEventListener('click', function (event) {
-    itemList.forEach(function (item) {
-        checkAllitems(item);
+    function validation(item) {
         if (!validated) {
-            event.preventDefault();
-            document.querySelector('.wrong').focus();
+            item.classList.add('wrong');
+            if (!item.nextElementSibling) {
+                item.insertAdjacentHTML('afterend', `<p class="error-message">${dec}</p>`)
+            }
+        } else {
+            item.classList.remove('wrong');
+            if (item.nextElementSibling) {
+                item.nextElementSibling.remove();
+            }
         }
+    }
+
+    function formLength(item) {
+        if (!item.value) {
+            validated = false;
+            dec = 'Нельзя оставлять пустую строку';
+        } else {
+            validated = true;
+        }
+        validation(item);
+    }
+
+    function numberValid(item) {
+        if (item.type === 'number' && (item.value <= 0 || item.value === '')) {
+            validated = false;
+            dec = 'Введите значене больше 0';
+        } else {
+            validated = true;
+        }
+        validNumber.forEach(function(item) {
+            validation(item);
+        });
+    }
+
+    function emailValid(item) {
+        if (item.type === 'email' && !item.value.match('.@')) {
+            validated = false;
+            dec = 'Введите корректный Email';
+        } else {
+            validated = true;
+        }
+        validEmail.forEach(function(item) {
+            validation(item);
+        });
+    }
+
+    function radioValid(item) {
+        let checkedItems = document.forms[0].querySelectorAll('input[type=radio]:checked');
+        if (item.type === 'radio' && !checkedItems.length) {
+            validated = false;
+            dec = 'Выберите вариант';
+        } else {
+            validated = true;
+        }
+        let radioStyle = document.forms[0].querySelector('.radio');
+        validation(radioStyle);
+    }
+
+    function checkAllitems(item) {
+        formLength(item);
+        switch (item.type) {
+            case 'number':
+                numberValid(item);
+                break;
+            case 'email':
+                emailValid(item);
+                break;
+            case 'radio':
+                radioValid(item);
+                break;
+        }
+    }
+
+    itemList.forEach(function(item) {
+        item.addEventListener('blur', function() {
+            checkAllitems(item);
+        });
     });
-});
-} validall();
+
+    let submit = document.forms[0].querySelector('[type=submit]');
+    submit.addEventListener('click', function(event) {
+        itemList.forEach(function(item) {
+            checkAllitems(item);
+            if (!validated) {
+                event.preventDefault();
+                document.querySelector('.wrong').focus();
+            }
+        });
+    });
+}
+validall();
